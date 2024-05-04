@@ -7,10 +7,11 @@
 def anagram(str_1, str_2):
     word_1 = set (str_1)
     word_2 = set (str_2)
-    if word_1 == word_2:
+    if word_1 == word_2 and len(str_1) == len(str_2):
         return True
     else:
         return False
 
 print(anagram('listen', 'silent'))
 print(anagram('сосна', 'насос'))
+print(anagram('listen', 'ssilent'))
