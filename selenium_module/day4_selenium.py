@@ -122,7 +122,7 @@
 # Вы успешно купили автомобиль!
 
 
-#_________________________________________не решили задачу - как скомбинировать не знаю синтаксис
+#_________________________________________не решили задачу - как скомбинировать не знаю синтаксис https://docs.google.com/document/d/1kwJLHZy7o1QU2fDyjal6-epM2wQusAXrpkvSdFma51Q/edit
 import time
 from selenium import webdriver #импортирую сам вебдрайвер
 from selenium.webdriver.common.by import By #импортирую класс By который ищет элемент на странице
@@ -136,14 +136,15 @@ driver = webdriver.Chrome() #иницилизирую драйвер брауз�
 try:
     driver.get('https://erikdark.github.io/QA_autotest_16/')
 
-    if 
+    
     a1 = WebDriverWait(driver,5).until((EC.text_to_be_present_in_element((By.ID,"price1"), '550')))
     print(a1)
     print(type(a1)) 
     a2 = WebDriverWait(driver,5).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))) 
     print(a2)
     print(type(a2)) 
-    
+    if a1 and a2:
+        WebDriverWait(driver,5).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))).click() 
     # .click() 
     # lada_price.click() 
     # код ожидает N секунд пока элемент станет видимым
@@ -153,8 +154,10 @@ try:
     # btn = WebDriverWait(driver,1).until(EC.element_to_be_clickable((By.ID,'buyButton1'))).click() # код ожидает 1 секунд пока элемент станет доступным для нажатия
     message = driver.find_element(By.ID,'message1')
     assert 'Вы успешно купили автомобиль!' in message.text
+    
        
        
 finally:
     time.sleep(5)
     driver.quit()
+
