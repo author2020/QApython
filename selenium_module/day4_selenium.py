@@ -137,14 +137,15 @@ try:
     driver.get('https://erikdark.github.io/QA_autotest_16/')
 
     
-    a1 = WebDriverWait(driver,5).until((EC.text_to_be_present_in_element((By.ID,"price1"), '550')))
-    print(a1)
-    print(type(a1)) 
-    a2 = WebDriverWait(driver,5).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))) 
-    print(a2)
-    print(type(a2)) 
-    if a1 and a2:
-        WebDriverWait(driver,5).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))).click() 
+    # a1 = WebDriverWait(driver,5).until((EC.text_to_be_present_in_element((By.ID,"price1"), '550')))
+    # print(a1)
+    # print(type(a1)) 
+    # a2 = WebDriverWait(driver,5).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))) 
+    # print(a2)
+    # print(type(a2)) 
+    if WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))): # and WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))):
+    # if WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))):
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#buyButton1'))).click() 
     # .click() 
     # lada_price.click() 
     # код ожидает N секунд пока элемент станет видимым
@@ -154,10 +155,22 @@ try:
     # btn = WebDriverWait(driver,1).until(EC.element_to_be_clickable((By.ID,'buyButton1'))).click() # код ожидает 1 секунд пока элемент станет доступным для нажатия
     message = driver.find_element(By.ID,'message1')
     assert 'Вы успешно купили автомобиль!' in message.text
-    
+
        
        
 finally:
     time.sleep(5)
     driver.quit()
+
+#________________________________________ДЗ_не решила задачи - как скомбинировать не знаю синтаксис https://docs.google.com/document/d/1kwJLHZy7o1QU2fDyjal6-epM2wQusAXrpkvSdFma51Q/edit
+# ДЗ:
+# https://erikdark.github.io/QA_autotest_16/
+# https://erikdark.github.io/Qa_autotests_17/
+# Задача: написать код, который будет при запуске 10 раз из 10 выдавать нужный результат за исключением физической невозможности дать верный ответ.
+# Для 2 и 3 машины
+# 800
+# 19000
+# https://docs.google.com/document/d/1GFF7sSzvk3zV0Vq5QSwjEhzA3i28C_hFK1aQCjAuGf0/edit
+# Пример вакансии на которую не стоит тратить время
+
 
